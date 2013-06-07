@@ -1,11 +1,16 @@
 Depot::Application.routes.draw do
+  get 'admin' => 'admin#index'
+
+  resources :users
   resources :orders
-
-
   resources :line_items
-
-
   resources :carts
+
+  controller :sessions do
+    get    'login' => :new
+    post   'login' => :create
+    delete 'logout' => :destroy
+  end
 
 
   get "store/index"
